@@ -9,195 +9,126 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0b1f3a;
-  --navy-2:#122b4f;
-  --scarlet:#d81e2c;
-  --scarlet-dk:#b0151f;
-  --paper:#f6f4ee;
-  --paper-2:#efece3;
-  --ink:#0d1b2e;
-  --muted:#5f6b7d;
-  --line:#dcd8cd;
-  --gold:#e6b34a;
-  --ok:#1f9d55;
-  --shadow:0 18px 45px -18px rgba(11,31,58,.45);
+  --navy:#0b1f3a;--navy-2:#122b4f;--scarlet:#d81e2c;--scarlet-dk:#b0151f;
+  --paper:#f6f4ee;--paper-2:#efece3;--ink:#0d1b2e;--muted:#5f6b7d;--line:#dcd8cd;
+  --gold:#e6b34a;--ok:#1f9d55;--shadow:0 18px 45px -18px rgba(11,31,58,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Barlow',system-ui,sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
+body{font-family:'Barlow',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 
-/* ---------- demo bar ---------- */
-.demobar{
-  background:repeating-linear-gradient(45deg,#111 0 14px,#1a1a1a 14px 28px);
-  color:#ffd84d;font-family:'Barlow Condensed',sans-serif;font-weight:600;
-  letter-spacing:.06em;text-transform:uppercase;font-size:13px;
-  text-align:center;padding:7px 14px;
-}
+.demobar{background:repeating-linear-gradient(45deg,#111 0 14px,#1a1a1a 14px 28px);color:#ffd84d;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  font-size:13px;text-align:center;padding:7px 14px}
 .demobar b{color:#fff}
-
-/* ---------- top / private banner ---------- */
-.priv{
-  background:var(--navy);color:#cdd8ea;font-size:12.5px;
-  font-family:'Barlow Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase;
-  display:flex;gap:8px;align-items:center;justify-content:center;padding:8px 14px;font-weight:600;
-}
+.priv{background:var(--navy);color:#cdd8ea;font-size:12.5px;font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:.08em;text-transform:uppercase;display:flex;gap:8px;align-items:center;justify-content:center;padding:8px 14px;font-weight:600}
 .priv svg{width:14px;height:14px;stroke:var(--gold)}
 
-header.masthead{
-  position:relative;overflow:hidden;
-  background:
-    radial-gradient(120% 140% at 85% -20%, rgba(216,30,44,.35) 0%, transparent 55%),
+header.masthead{position:relative;overflow:hidden;background-color:var(--navy);color:#fff;
+  background:radial-gradient(120% 140% at 85% -20%, rgba(216,30,44,.35) 0%, transparent 55%),
     radial-gradient(90% 120% at 0% 120%, rgba(230,179,74,.18) 0%, transparent 50%),
-    linear-gradient(160deg,#0b1f3a 0%, #0a1a33 60%, #081426 100%);
-  background-color:var(--navy);
-  color:#fff;
-}
-header.masthead::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px);
-  mix-blend-mode:overlay;opacity:.5;
-}
+    linear-gradient(160deg,#0b1f3a 0%, #0a1a33 60%, #081426 100%)}
+header.masthead::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px);mix-blend-mode:overlay;opacity:.5}
 .mh-inner{max-width:1120px;margin:0 auto;padding:26px 22px 30px;position:relative;z-index:2}
 .mh-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .studio{display:flex;align-items:center;gap:11px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:#b9c6dc}
 .studio .dot{width:9px;height:9px;background:var(--scarlet);border-radius:50%;box-shadow:0 0 0 4px rgba(216,30,44,.25)}
-.cartbtn{
-  display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.16);color:#fff;padding:9px 15px;border-radius:100px;
-  font-weight:600;font-size:14px;cursor:pointer;transition:.18s;font-family:'Barlow',sans-serif;
-}
+.cartbtn{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  color:#fff;padding:9px 15px;border-radius:100px;font-weight:600;font-size:14px;cursor:pointer;transition:.18s;font-family:'Barlow',sans-serif}
 .cartbtn:hover{background:rgba(255,255,255,.16)}
-.cartbtn .count{background:var(--scarlet);color:#fff;border-radius:100px;min-width:21px;height:21px;
-  display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;padding:0 5px}
-
+.cartbtn .count{background:var(--scarlet);color:#fff;border-radius:100px;min-width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;padding:0 5px}
 .mh-hero{margin-top:34px;display:grid;grid-template-columns:1.4fr .9fr;gap:30px;align-items:end}
-.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
-  font-size:14px;color:var(--gold);display:flex;align-items:center;gap:10px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:14px;color:var(--gold);display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
-h1.title{
-  font-family:'Anton',sans-serif;font-weight:400;line-height:.92;letter-spacing:.01em;
-  font-size:clamp(42px,7.5vw,88px);text-transform:uppercase;margin:14px 0 6px;
-  text-shadow:0 2px 0 rgba(0,0,0,.2);
-}
+h1.title{font-family:'Anton',sans-serif;font-weight:400;line-height:.92;letter-spacing:.01em;font-size:clamp(42px,7.5vw,88px);text-transform:uppercase;margin:14px 0 6px;text-shadow:0 2px 0 rgba(0,0,0,.2)}
 h1.title .yr{color:var(--scarlet);-webkit-text-stroke:1px rgba(255,255,255,.15)}
-.subhead{color:#c3cfe0;font-size:17px;max-width:44ch}
-.mh-card{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;
-  padding:20px 20px 18px;backdrop-filter:blur(6px)
-}
-.mh-card h4{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;
-  font-size:14px;color:var(--gold);margin-bottom:12px;font-weight:600}
+.subhead{color:#c3cfe0;font-size:17px;max-width:46ch}
+.mh-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 20px 18px;backdrop-filter:blur(6px)}
+.mh-card h4{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--gold);margin-bottom:12px;font-weight:600}
 .mh-card ol{list-style:none;counter-reset:s;display:grid;gap:11px}
 .mh-card li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#dbe4f0}
-.mh-card li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;
-  background:var(--scarlet);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.mh-card li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;background:var(--scarlet);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px}
 
-/* ---------- layout ---------- */
 main{max-width:1120px;margin:0 auto;padding:40px 22px 80px}
 .view{display:none;animation:fade .4s ease}
 .view.active{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
 .order-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:start}
-.panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
-.panel-h{padding:18px 22px;border-bottom:1px solid var(--line);background:var(--paper-2);
-  display:flex;align-items:center;gap:11px}
-.panel-h .n{font-family:'Anton',sans-serif;color:#fff;background:var(--navy);width:30px;height:30px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;font-size:16px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:22px}
+.panel-h{padding:16px 22px;border-bottom:1px solid var(--line);background:var(--paper-2);display:flex;align-items:center;gap:11px}
+.panel-h .n{font-family:'Anton',sans-serif;color:#fff;background:var(--navy);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
 .panel-h h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:20px;font-weight:700}
+.panel-h .hint{margin-left:auto;font-size:12.5px;color:var(--muted);font-style:italic}
 .panel-b{padding:22px}
 
-label.fld{display:block;margin-bottom:16px}
-label.fld .lab{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;
-  font-weight:600;font-size:14px;color:var(--muted);margin-bottom:6px;display:block}
-.inp,select.inp{
-  width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:16px;
-  font-family:'Barlow',sans-serif;background:var(--paper);color:var(--ink);transition:.15s;
-}
+label.fld{display:block;margin-bottom:15px}
+label.fld .lab{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:13.5px;color:var(--muted);margin-bottom:6px;display:block}
+.req{color:var(--scarlet)}
+.inp,select.inp{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;font-size:15.5px;font-family:'Barlow',sans-serif;background:var(--paper);color:var(--ink);transition:.15s}
 .inp:focus,select.inp:focus{outline:none;border-color:var(--navy);background:#fff;box-shadow:0 0 0 4px rgba(11,31,58,.09)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 
-/* package dropdown as rich select */
 .pkg-select{position:relative}
 select.inp.big{padding:15px 44px 15px 14px;font-weight:600;font-size:16px;appearance:none;cursor:pointer}
 .pkg-select .chev{position:absolute;right:15px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--navy)}
-
-.pkg-detail{margin-top:14px;border:1.5px dashed var(--line);border-radius:12px;padding:15px 16px;background:var(--paper);
-  display:flex;gap:14px;align-items:flex-start}
-.pkg-detail .pic{flex:none;width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy-2));
-  display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Anton';font-size:26px}
+.pkg-detail{margin-top:14px;border:1.5px dashed var(--line);border-radius:12px;padding:15px 16px;background:var(--paper);display:flex;gap:14px;align-items:flex-start}
+.pkg-detail .pic{flex:none;width:60px;height:60px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy-2));display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Anton';font-size:24px}
 .pkg-detail .inc{font-size:14px;color:var(--muted)}
 .pkg-detail .inc b{color:var(--ink)}
 .pkg-detail .pr{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;color:var(--scarlet)}
 
-.addons{display:grid;gap:11px;margin-top:4px}
-.addon{display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;
-  cursor:pointer;transition:.15s;background:#fff;user-select:none}
-.addon:hover{border-color:#c3bdac}
-.addon.on{border-color:var(--navy);background:var(--paper);box-shadow:0 0 0 3px rgba(11,31,58,.06)}
-.addon .box{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid var(--line);display:flex;
-  align-items:center;justify-content:center;transition:.15s}
-.addon.on .box{background:var(--navy);border-color:var(--navy)}
-.addon .box svg{width:14px;height:14px;stroke:#fff;stroke-width:3;opacity:0;transition:.15s}
-.addon.on .box svg{opacity:1}
-.addon .txt{flex:1}
-.addon .txt .t{font-weight:600;font-size:15px}
-.addon .txt .d{font-size:13px;color:var(--muted)}
-.addon .ap{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--navy);font-size:18px}
+.grp-title{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:700;font-size:15px;color:var(--navy);margin:22px 0 10px;display:flex;align-items:center;gap:10px}
+.grp-title:first-child{margin-top:0}
+.grp-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.addon-list{display:grid;gap:9px}
+.addon{display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);border-radius:11px;padding:10px 13px;transition:.15s;background:#fff}
+.addon.on{border-color:var(--navy);background:var(--paper);box-shadow:0 0 0 3px rgba(11,31,58,.05)}
+.addon .txt{flex:1;min-width:0}
+.addon .txt .t{font-weight:600;font-size:14.5px}
+.addon .txt .p{font-size:13px;color:var(--muted)}
+.stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:9px;overflow:hidden;flex:none}
+.stepper button{width:34px;height:36px;background:var(--paper-2);border:none;font-size:18px;cursor:pointer;color:var(--navy);font-weight:700;line-height:1}
+.stepper button:hover{background:var(--line)}
+.stepper .v{width:38px;text-align:center;font-weight:700;font-size:15px;background:#fff;line-height:36px}
+.buddy-names{margin-top:9px}
 
-.qty{display:flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;width:fit-content}
-.qty button{width:40px;height:42px;background:var(--paper-2);border:none;font-size:20px;cursor:pointer;color:var(--navy);font-weight:700}
-.qty button:hover{background:var(--line)}
-.qty input{width:52px;height:42px;border:none;text-align:center;font-size:16px;font-weight:700;font-family:'Barlow',sans-serif;background:#fff}
-
-.addcart{width:100%;margin-top:20px;background:var(--scarlet);color:#fff;border:none;padding:16px;border-radius:12px;
-  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:700;font-size:19px;
-  cursor:pointer;transition:.18s;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 22px -10px rgba(216,30,44,.7)}
+.addcart{width:100%;margin-top:6px;background:var(--scarlet);color:#fff;border:none;padding:16px;border-radius:12px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:700;font-size:19px;cursor:pointer;transition:.18s;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 22px -10px rgba(216,30,44,.7)}
 .addcart:hover{background:var(--scarlet-dk);transform:translateY(-1px)}
-.addcart:active{transform:translateY(0)}
+.addcart svg{width:20px;height:20px;flex:none}
 
-/* running total sidebar */
 .summary{position:sticky;top:20px}
 .sum-live{background:var(--navy);color:#fff;border-radius:16px;padding:22px;box-shadow:var(--shadow)}
 .sum-live h4{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.09em;font-size:15px;color:var(--gold);margin-bottom:14px}
-.sum-line{display:flex;justify-content:space-between;font-size:14.5px;padding:7px 0;color:#c7d3e6;border-bottom:1px dashed rgba(255,255,255,.12)}
-.sum-line span:last-child{font-family:'JetBrains Mono',monospace;color:#fff}
+.sum-line{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:6px 0;color:#c7d3e6;border-bottom:1px dashed rgba(255,255,255,.12)}
+.sum-line span:last-child{font-family:'JetBrains Mono',monospace;color:#fff;flex:none}
 .sum-line.muted{color:#8ea1bd;font-style:italic;border:none;justify-content:center;padding:14px 0}
-.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-top:14px;border-top:2px solid rgba(255,255,255,.2)}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,.2)}
 .sum-total .l{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:18px}
 .sum-total .v{font-family:'Anton',sans-serif;font-size:38px;color:var(--gold);line-height:1}
 .trust{margin-top:16px;display:flex;flex-direction:column;gap:8px}
 .trust div{display:flex;gap:9px;align-items:center;font-size:13.5px;color:#b8c4d8}
 .trust svg{width:16px;height:16px;stroke:var(--gold);flex:none}
 
-/* ---------- cart view ---------- */
-.section-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(28px,5vw,44px);color:var(--navy);
-  line-height:1;margin-bottom:6px}
+.section-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(28px,5vw,44px);color:var(--navy);line-height:1;margin-bottom:6px}
 .section-sub{color:var(--muted);margin-bottom:26px;font-size:16px}
 .cart-list{display:flex;flex-direction:column;gap:14px}
-.citem{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;gap:16px;align-items:center;box-shadow:0 6px 18px -12px rgba(11,31,58,.4)}
-.citem .thumb{flex:none;width:58px;height:58px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy-2));
-  color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Anton';font-size:22px}
+.citem{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 6px 18px -12px rgba(11,31,58,.4)}
+.citem .thumb{flex:none;width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Anton';font-size:20px}
 .citem .info{flex:1;min-width:0}
 .citem .info .nm{font-weight:700;font-size:16px}
 .citem .info .meta{font-size:13px;color:var(--muted);margin-top:2px}
-.citem .miniqty{transform:scale(.9)}
+.citem .info .items{font-size:13px;color:var(--ink);margin-top:6px;line-height:1.5}
 .citem .lp{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:var(--navy);min-width:74px;text-align:right}
-.citem .del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;padding:4px;line-height:1}
+.citem .del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;padding:4px;line-height:1}
 .citem .del:hover{color:var(--scarlet)}
-.cart-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px;
-  background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.cart-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
 .cart-foot .tot{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:16px;color:var(--muted)}
 .cart-foot .tot b{font-family:'Anton',sans-serif;color:var(--navy);font-size:36px;display:block;letter-spacing:.01em}
-.btn{border:none;border-radius:11px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;
-  font-weight:700;font-size:17px;cursor:pointer;transition:.18s;padding:14px 26px}
+.btn{border:none;border-radius:11px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:17px;cursor:pointer;transition:.18s;padding:14px 26px}
 .btn-primary{background:var(--scarlet);color:#fff;box-shadow:0 10px 22px -10px rgba(216,30,44,.7)}
 .btn-primary:hover{background:var(--scarlet-dk);transform:translateY(-1px)}
 .btn-navy{background:var(--navy);color:#fff}
@@ -207,7 +138,6 @@ select.inp.big{padding:15px 44px 15px 14px;font-weight:600;font-size:16px;appear
 .empty{text-align:center;padding:60px 20px;color:var(--muted)}
 .empty .big{font-family:'Anton';font-size:40px;color:var(--line)}
 
-/* ---------- checkout ---------- */
 .co-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
 .card-visual{background:linear-gradient(135deg,#0b1f3a,#1c3a63);border-radius:16px;padding:22px;color:#fff;position:relative;overflow:hidden;margin-bottom:20px}
 .card-visual::before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(216,30,44,.4);top:-70px;right:-40px;filter:blur(10px)}
@@ -215,21 +145,14 @@ select.inp.big{padding:15px 44px 15px 14px;font-weight:600;font-size:16px;appear
 .card-visual .chip{width:42px;height:30px;border-radius:6px;background:linear-gradient(135deg,var(--gold),#c8912f);margin:26px 0 16px;position:relative;z-index:1}
 .card-visual .num{font-family:'JetBrains Mono',monospace;font-size:19px;letter-spacing:.12em;position:relative;z-index:1}
 .card-visual .foot{display:flex;justify-content:space-between;margin-top:16px;font-size:12px;color:#b9c6dc;position:relative;z-index:1;font-family:'JetBrains Mono',monospace}
-.pay-methods{display:flex;gap:10px;margin-bottom:18px}
-.pm{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:12px;text-align:center;cursor:pointer;font-weight:600;font-size:14px;transition:.15s;background:#fff}
-.pm.on{border-color:var(--navy);background:var(--paper);box-shadow:0 0 0 3px rgba(11,31,58,.06)}
-.pm small{display:block;color:var(--muted);font-weight:500;font-size:11.5px}
-.co-summary .citem{padding:12px 14px}
 .co-total{background:var(--navy);color:#fff;border-radius:14px;padding:20px;margin-top:14px}
 .co-total .sum-line{color:#c7d3e6}
-.paybtn{width:100%;margin-top:8px;background:var(--ok);color:#fff;border:none;padding:16px;border-radius:12px;
-  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:19px;cursor:pointer;transition:.18s;display:flex;gap:10px;align-items:center;justify-content:center}
+.paybtn{width:100%;margin-top:8px;background:var(--ok);color:#fff;border:none;padding:16px;border-radius:12px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:19px;cursor:pointer;transition:.18s;display:flex;gap:10px;align-items:center;justify-content:center}
 .paybtn:hover{filter:brightness(1.07)}
 .paybtn svg{width:20px;height:20px;flex:none}
 .securenote{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px;display:flex;gap:6px;align-items:center;justify-content:center}
 .securenote svg{width:14px;height:14px;stroke:var(--ok)}
 
-/* confirmation */
 .confirm{max-width:560px;margin:20px auto;text-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:44px 30px;box-shadow:var(--shadow)}
 .confirm .check{width:82px;height:82px;border-radius:50%;background:var(--ok);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;animation:pop .5s cubic-bezier(.2,1.3,.5,1)}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
@@ -238,8 +161,7 @@ select.inp.big{padding:15px 44px 15px 14px;font-weight:600;font-size:16px;appear
 .confirm p{color:var(--muted);margin-bottom:6px}
 .confirm .ordno{font-family:'JetBrains Mono';font-weight:600;color:var(--navy);background:var(--paper);display:inline-block;padding:6px 14px;border-radius:8px;margin:12px 0 20px}
 
-/* clone / other stores note */
-.clone{margin-top:52px;border-radius:18px;padding:30px 28px;background:linear-gradient(135deg,var(--navy),#0a1830);color:#fff;position:relative;overflow:hidden}
+.clone{margin-top:34px;border-radius:18px;padding:30px 28px;background:linear-gradient(135deg,var(--navy),#0a1830);color:#fff;position:relative;overflow:hidden}
 .clone::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(230,179,74,.25),transparent 70%)}
 .clone h3{font-family:'Anton';text-transform:uppercase;font-size:26px;margin-bottom:8px}
 .clone p{color:#c3cfe0;max-width:60ch;font-size:15px;margin-bottom:18px}
@@ -250,22 +172,22 @@ select.inp.big{padding:15px 44px 15px 14px;font-weight:600;font-size:16px;appear
 footer{background:var(--navy);color:#8ea1bd;text-align:center;padding:26px 20px;font-size:13px}
 footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase}
 
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--navy);color:#fff;
-  padding:14px 22px;border-radius:100px;font-weight:600;box-shadow:var(--shadow);z-index:99;display:flex;gap:10px;align-items:center;transition:.35s cubic-bezier(.2,1.2,.4,1)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--navy);color:#fff;padding:14px 22px;border-radius:100px;font-weight:600;box-shadow:var(--shadow);z-index:99;display:flex;gap:10px;align-items:center;transition:.35s cubic-bezier(.2,1.2,.4,1);max-width:90vw}
 .toast.show{transform:translateX(-50%) translateY(0)}
-.toast svg{width:18px;height:18px;stroke:var(--gold)}
+.toast svg{width:18px;height:18px;stroke:var(--gold);flex:none}
 
 @media(max-width:860px){
   .mh-hero{grid-template-columns:1fr}
   .order-grid{grid-template-columns:1fr}
   .co-grid{grid-template-columns:1fr}
   .summary{position:static}
+  .grid3{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
-<div class="demobar">Interactive Demo — <b>Redondo Union Sports 2026</b> · sample order page built for Manhattan Beach Studios</div>
+<div class="demobar">Interactive Demo — <b>Redondo Union Sports 2026</b> · real order form built for Mark Nicholas Photography / Manhattan Beach Studios</div>
 <div class="priv">
   <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
   Private ordering page · shared by link · hidden from the public shop
@@ -274,7 +196,7 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
 <header class="masthead">
   <div class="mh-inner">
     <div class="mh-top">
-      <div class="studio"><span class="dot"></span>Manhattan Beach Studios</div>
+      <div class="studio"><span class="dot"></span>Mark Nicholas Photography · Manhattan Beach Studios</div>
       <button class="cartbtn" onclick="go('cart')">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
         Cart <span class="count" id="cartCount">0</span>
@@ -284,13 +206,13 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
       <div>
         <div class="eyebrow">Sea Hawks Athletics</div>
         <h1 class="title">Redondo Union<br>Sports <span class="yr">2026</span></h1>
-        <p class="subhead">Official team &amp; individual photo packages. Order online, pay securely, and we handle the rest. Deadline to order: <b style="color:#fff">March 14, 2026</b>.</p>
+        <p class="subhead">Official team &amp; individual sports photos. Pick a package, add any extras, and check out securely — no more paper order forms.</p>
       </div>
       <div class="mh-card">
         <h4>How ordering works</h4>
         <ol>
-          <li>Enter your athlete's details</li>
-          <li>Pick a package &amp; add any extras</li>
+          <li>Enter the athlete &amp; parent details</li>
+          <li>Choose a package (or none) &amp; add extras</li>
           <li>Pay securely by card — done</li>
         </ol>
       </div>
@@ -303,76 +225,78 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
   <!-- ORDER VIEW -->
   <section class="view active" id="view-order">
     <div class="order-grid">
-      <div class="panel">
-        <div class="panel-h"><span class="n">1</span><h3>Build Your Order</h3></div>
-        <div class="panel-b">
-
-          <label class="fld">
-            <span class="lab">Athlete's Full Name</span>
-            <input class="inp" id="fAthlete" placeholder="e.g. Jordan Reyes">
-          </label>
-          <div class="row2">
-            <label class="fld">
-              <span class="lab">Sport / Team</span>
-              <select class="inp" id="fSport">
-                <option>Varsity Football</option>
-                <option>Girls Volleyball</option>
-                <option>Boys Basketball</option>
-                <option>Girls Soccer</option>
-                <option>Baseball</option>
-                <option>Track &amp; Field</option>
-                <option>Cheer</option>
-              </select>
-            </label>
-            <label class="fld">
-              <span class="lab">Jersey #</span>
-              <input class="inp" id="fJersey" placeholder="e.g. 24">
-            </label>
-          </div>
-
-          <label class="fld pkg-select">
-            <span class="lab">Choose Your Package</span>
-            <select class="inp big" id="fPkg" onchange="renderPkg()">
-              <option value="A">Package A — $35</option>
-              <option value="B">Package B — $45</option>
-              <option value="C">Package C — $55</option>
-              <option value="8x10">Single 8×10 Print — $14</option>
-            </select>
-            <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-          </label>
-
-          <div class="pkg-detail" id="pkgDetail"></div>
-
-          <div style="margin:24px 0 10px" class="lab" >
-            <span style="font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.07em;font-weight:700;font-size:15px;color:var(--muted)">Add Extras (optional)</span>
-          </div>
-          <div class="addons" id="addons"></div>
-
-          <label class="fld" style="margin-top:22px">
-            <span class="lab">Quantity</span>
-            <div class="qty">
-              <button type="button" onclick="bump(-1)">−</button>
-              <input id="fQty" value="1" readonly>
-              <button type="button" onclick="bump(1)">+</button>
+      <div>
+        <!-- details -->
+        <div class="panel">
+          <div class="panel-h"><span class="n">1</span><h3>Athlete &amp; Parent</h3></div>
+          <div class="panel-b">
+            <div class="grid2">
+              <label class="fld"><span class="lab">Athlete First Name <span class="req">*</span></span><input class="inp" id="fAthFirst" placeholder="Jordan"></label>
+              <label class="fld"><span class="lab">Athlete Last Name <span class="req">*</span></span><input class="inp" id="fAthLast" placeholder="Reyes"></label>
             </div>
-          </label>
-
-          <button class="addcart" onclick="addToCart()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
-            Add to Cart · <span id="addPrice">$35.00</span>
-          </button>
+            <div class="grid3">
+              <label class="fld"><span class="lab">Jersey #</span><input class="inp" id="fJersey" placeholder="24"></label>
+              <label class="fld"><span class="lab">Sport / Team</span>
+                <select class="inp" id="fSport">
+                  <option>Football</option><option>Girls Volleyball</option><option>Boys Basketball</option>
+                  <option>Girls Basketball</option><option>Girls Soccer</option><option>Boys Soccer</option>
+                  <option>Baseball</option><option>Softball</option><option>Track &amp; Field</option>
+                  <option>Water Polo</option><option>Cheer</option><option>Other</option>
+                </select>
+              </label>
+              <label class="fld"><span class="lab">Level</span>
+                <select class="inp" id="fLevel"><option>Varsity</option><option>JV</option><option>Freshman</option></select>
+              </label>
+            </div>
+            <div class="grid2">
+              <label class="fld"><span class="lab">Parent First Name <span class="req">*</span></span><input class="inp" id="fParFirst" placeholder="Alex"></label>
+              <label class="fld"><span class="lab">Parent Last Name <span class="req">*</span></span><input class="inp" id="fParLast" placeholder="Reyes"></label>
+            </div>
+            <div class="grid2">
+              <label class="fld"><span class="lab">Phone</span><input class="inp" id="fPhone" placeholder="(310) 555-1234"></label>
+              <label class="fld"><span class="lab">Email (for receipt)</span><input class="inp" id="fEmail" placeholder="parent@email.com"></label>
+            </div>
+          </div>
         </div>
+
+        <!-- package -->
+        <div class="panel">
+          <div class="panel-h"><span class="n">2</span><h3>Choose a Package</h3><span class="hint">A, B, C — or none</span></div>
+          <div class="panel-b">
+            <label class="fld pkg-select" style="margin-bottom:0">
+              <select class="inp big" id="fPkg" onchange="renderPkg()">
+                <option value="A">Package A — $35</option>
+                <option value="B">Package B — $45</option>
+                <option value="C">Package C — $55</option>
+                <option value="NONE">No package — just add-ons</option>
+              </select>
+              <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+            </label>
+            <div class="pkg-detail" id="pkgDetail"></div>
+          </div>
+        </div>
+
+        <!-- add-ons -->
+        <div class="panel">
+          <div class="panel-h"><span class="n">3</span><h3>Add Extras</h3><span class="hint">optional · set a quantity</span></div>
+          <div class="panel-b" id="addonBox"></div>
+        </div>
+
+        <button class="addcart" onclick="addToCart()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add This Order to Cart · <span id="addPrice">$35.00</span>
+        </button>
       </div>
 
       <aside class="summary">
         <div class="sum-live">
-          <h4>Your Selection</h4>
+          <h4>This Athlete's Order</h4>
           <div id="liveLines"></div>
-          <div class="sum-total"><span class="l">This item</span><span class="v" id="liveTotal">$35</span></div>
+          <div class="sum-total"><span class="l">Subtotal</span><span class="v" id="liveTotal">$35</span></div>
           <div class="trust">
-            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure card checkout</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure card checkout via Square</div>
             <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Priced per item — never per day</div>
-            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Order by Mar 14, 2026</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.6 5.7 21l2.3-7.2-6-4.4h7.6z"/></svg>Order multiple athletes in one cart</div>
           </div>
         </div>
       </aside>
@@ -394,7 +318,7 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
   <!-- CART VIEW -->
   <section class="view" id="view-cart">
     <h2 class="section-title">Your Cart</h2>
-    <p class="section-sub">Review your photo order — quantities are per item, exactly as you'd expect.</p>
+    <p class="section-sub">Each entry is one athlete's order — quantities are per item, exactly as on the paper form.</p>
     <div id="cartBody"></div>
   </section>
 
@@ -403,51 +327,39 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
     <h2 class="section-title">Checkout</h2>
     <p class="section-sub">Pay securely by card. This is a demo — use any numbers, no real charge is made.</p>
     <div class="co-grid">
-      <div class="panel">
+      <div class="panel" style="margin:0">
         <div class="panel-h"><span class="n">$</span><h3>Payment Details</h3></div>
         <div class="panel-b">
-          <div class="pay-methods">
-            <div class="pm on" id="pmCard" onclick="payMethod('card')">Credit / Debit<small>Visa · MC · Amex</small></div>
-            <div class="pm" id="pmPaypal" onclick="payMethod('paypal')">PayPal<small>pay with balance</small></div>
+          <div class="card-visual">
+            <div class="brand"><span style="font-family:'Barlow Condensed';letter-spacing:.1em;text-transform:uppercase;font-size:13px;color:#b9c6dc">Mark Nicholas Photography</span>
+              <span style="font-family:'Anton';color:var(--gold)">MBS</span></div>
+            <div class="chip"></div>
+            <div class="num" id="cardNum">•••• •••• •••• ••••</div>
+            <div class="foot"><span id="cardNameEcho">CARDHOLDER NAME</span><span id="cardExpEcho">MM / YY</span></div>
           </div>
-
-          <div id="cardForm">
-            <div class="card-visual">
-              <div class="brand"><span style="font-family:'Barlow Condensed';letter-spacing:.1em;text-transform:uppercase;font-size:13px;color:#b9c6dc">Manhattan Beach Studios</span>
-                <span style="font-family:'Anton';color:var(--gold)">MBS</span></div>
-              <div class="chip"></div>
-              <div class="num" id="cardNum">•••• •••• •••• ••••</div>
-              <div class="foot"><span id="cardNameEcho">CARDHOLDER NAME</span><span id="cardExpEcho">MM / YY</span></div>
-            </div>
-            <label class="fld"><span class="lab">Cardholder Name</span><input class="inp" id="ccName" placeholder="Name on card" oninput="echoCard()"></label>
-            <label class="fld"><span class="lab">Card Number</span><input class="inp" id="ccNum" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCard()"></label>
-            <div class="row2">
-              <label class="fld"><span class="lab">Expiry</span><input class="inp" id="ccExp" placeholder="12 / 28" maxlength="7" oninput="echoCard()"></label>
-              <label class="fld"><span class="lab">CVC</span><input class="inp" id="ccCvc" placeholder="123" maxlength="4"></label>
-            </div>
-            <label class="fld"><span class="lab">Email for receipt</span><input class="inp" id="ccEmail" placeholder="parent@email.com"></label>
-          </div>
-          <div id="paypalForm" style="display:none;text-align:center;padding:26px 10px">
-            <p style="color:var(--muted);margin-bottom:16px">You'll be redirected to PayPal to complete payment securely.</p>
-            <div style="font-family:'Barlow Condensed';font-size:26px;font-weight:700;color:#003087">Pay<span style="color:#009cde">Pal</span></div>
+          <label class="fld"><span class="lab">Cardholder Name</span><input class="inp" id="ccName" placeholder="Name on card" oninput="echoCard()"></label>
+          <label class="fld"><span class="lab">Card Number</span><input class="inp" id="ccNum" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCard()"></label>
+          <div class="grid2">
+            <label class="fld"><span class="lab">Expiry</span><input class="inp" id="ccExp" placeholder="12 / 28" maxlength="7" oninput="echoCard()"></label>
+            <label class="fld"><span class="lab">CVC</span><input class="inp" id="ccCvc" placeholder="123" maxlength="4"></label>
           </div>
         </div>
       </div>
 
-      <div class="co-summary">
-        <div class="panel">
+      <div>
+        <div class="panel" style="margin:0">
           <div class="panel-h"><span class="n">✓</span><h3>Order Summary</h3></div>
           <div class="panel-b" id="coItems"></div>
         </div>
         <div class="co-total">
           <div class="sum-line"><span>Subtotal</span><span id="coSub">$0.00</span></div>
-          <div class="sum-line"><span>Sales tax (est.)</span><span id="coTax">$0.00</span></div>
+          <div class="sum-line"><span>Sales tax (9.5%)</span><span id="coTax">$0.00</span></div>
           <div class="sum-total"><span class="l">Total</span><span class="v" id="coTotal">$0.00</span></div>
           <button class="paybtn" onclick="pay()">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             Pay <span id="payAmt">$0.00</span>
           </button>
-          <div class="securenote"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>256-bit secured · powered by Stripe</div>
+          <div class="securenote"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>256-bit secured · powered by Square</div>
         </div>
         <button class="btn btn-ghost" style="width:100%;margin-top:12px" onclick="go('cart')">← Back to cart</button>
       </div>
@@ -461,7 +373,7 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
       <h2>Order Confirmed!</h2>
       <p>Thanks — your Redondo Union photo order is in.</p>
       <div class="ordno" id="ordNo">#RU-2026-00000</div>
-      <p>A receipt has been sent to your email. Photos will be delivered per the team's schedule.</p>
+      <p>A receipt has been sent to your email. Photos are delivered per the team's schedule.</p>
       <button class="btn btn-navy" style="margin-top:22px" onclick="resetAll()">Place another order</button>
     </div>
   </section>
@@ -469,99 +381,161 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
 </main>
 
 <footer>
-  <b>Manhattan Beach Studios</b> · manhattanbeachstudios.net · Private team ordering — demo build
+  <b>Mark Nicholas Photography</b> · Manhattan Beach Studios · Private team ordering — demo build
 </footer>
 
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg">Added to cart</span></div>
 
 <script>
-/* ---------- data ---------- */
+/* ---------- data (from the real Redondo Union order form) ---------- */
 const PACKAGES={
-  A:{name:"Package A",price:35,inc:"Memory Mate · 2 × 5×7 · 8 Wallets",tag:"A"},
-  B:{name:"Package B",price:45,inc:"Memory Mate · 4 × 5×7 · 8 Wallets · 1 × 8×10",tag:"B"},
-  C:{name:"Package C",price:55,inc:"Memory Mate · 4 × 5×7 · 8 Wallets · 2 × 8×10 · Digital File",tag:"C"},
-  "8x10":{name:"Single 8×10 Print",price:14,inc:"One 8×10 photographic print",tag:"8"}
+  A:{name:"Package A",price:35,tag:"A",inc:"2 &times; 5&times;7 prints &middot; 8 wallets &middot; 8&times;10 Memory Mate"},
+  B:{name:"Package B",price:45,tag:"B",inc:"4 &times; 5&times;7 prints &middot; 1 &times; 8&times;10 print &middot; 8 wallets &middot; 8&times;10 Memory Mate"},
+  C:{name:"Package C",price:55,tag:"C",inc:"<b>Digital File included</b> &middot; 4 &times; 5&times;7 prints &middot; 2 &times; 8&times;10 prints &middot; 8 wallets &middot; 8&times;10 Memory Mate"},
+  NONE:{name:"No Package",price:0,tag:"—",inc:"No package selected — just add individual items below."}
 };
-const ADDONS=[
-  {id:"extra810",t:"Extra 8×10 Print",d:"An additional 8×10 keepsake",p:14},
-  {id:"digital",t:"Digital File",d:"High-res download of your photo",p:15},
-  {id:"wallets",t:"Extra Wallets (sheet of 8)",d:"Great for family & teammates",p:8},
-  {id:"buttons",t:"Photo Button + Magnet",d:"Fun locker & fridge extras",p:9},
-  {id:"retouch",t:"Premium Retouching",d:"Skin & background polish",p:10}
+const GROUPS=[
+  {group:"Prints & Wallets",items:[
+    {id:"i5x7",t:"(2) 5×7 Individual Prints",p:14},
+    {id:"i810",t:"(1) 8×10 Individual Print",p:14},
+    {id:"team810",t:"(1) 8×10 Team Photo",p:14},
+    {id:"jwallets",t:"(4) Jumbo Wallets",p:12},
+    {id:"swallets",t:"(8) Small Wallets",p:12},
+    {id:"buddy",t:"Buddy Photo — (2) 5×7 Images",p:14,buddy:true}
+  ]},
+  {group:"Keepsakes & Gifts",items:[
+    {id:"mug",t:"Photo Mug",p:25},
+    {id:"tmug",t:"Travel Mug",p:30},
+    {id:"magnet",t:"Photo Magnet",p:10},
+    {id:"keychain",t:"Key Chain",p:10},
+    {id:"buttons",t:"Buttons",p:9},
+    {id:"dogtags",t:"Custom Laser Dog Tags",p:18},
+    {id:"earrings",t:"Player ID Helmet Earrings",p:18},
+    {id:"coin",t:"Custom Bronze Player Coin",p:35}
+  ]},
+  {group:"Speciality Items",items:[
+    {id:"canvas",t:"Canvas Print 16×20 (custom size)",p:55},
+    {id:"engrave",t:"Laser Wood Engraving 8×10",p:45},
+    {id:"statuette",t:"Statuette w/ Stand",p:48},
+    {id:"standup",t:"Stand Up",p:35},
+    {id:"plaque",t:"8×10 Plaque (Individual + Team)",p:35}
+  ]}
 ];
+const ALL_ADDONS=GROUPS.flatMap(g=>g.items);
+const byId=id=>ALL_ADDONS.find(a=>a.id===id);
+
+let qty={};ALL_ADDONS.forEach(a=>qty[a.id]=0);
+let buddyNames="";
 let cart=[];
 let ORDN=41207;
 
-/* ---------- helpers ---------- */
 const $=id=>document.getElementById(id);
 const money=n=>'$'+n.toFixed(2);
 function curPkg(){return PACKAGES[$('fPkg').value]}
-function selectedAddons(){return ADDONS.filter(a=>$('ad_'+a.id).classList.contains('on'))}
-function itemUnit(){return curPkg().price+selectedAddons().reduce((s,a)=>s+a.p,0)}
-function itemQty(){return parseInt($('fQty').value)||1}
 
-/* ---------- render order builder ---------- */
+/* ---------- render ---------- */
 function renderPkg(){
   const p=curPkg();
   $('pkgDetail').innerHTML=`
     <div class="pic">${p.tag}</div>
-    <div><div style="font-weight:700;font-size:16px">${p.name}</div><div class="inc"><b>Includes:</b> ${p.inc}</div></div>
-    <div class="pr">${money(p.price)}</div>`;
+    <div><div style="font-weight:700;font-size:16px">${p.name}</div><div class="inc">${p.inc}</div></div>
+    <div class="pr">${p.price?money(p.price):'—'}</div>`;
   renderLive();
 }
 function renderAddons(){
-  $('addons').innerHTML=ADDONS.map(a=>`
-    <div class="addon" id="ad_${a.id}" onclick="toggleAddon('${a.id}')">
-      <span class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span>
-      <span class="txt"><span class="t">${a.t}</span><span class="d">${a.d}</span></span>
-      <span class="ap">+${money(a.p)}</span>
-    </div>`).join('');
+  let h='';
+  GROUPS.forEach(g=>{
+    h+=`<div class="grp-title">${g.group}</div><div class="addon-list">`;
+    g.items.forEach(a=>{
+      h+=`<div class="addon" id="ad_${a.id}">
+        <div class="txt"><div class="t">${a.t}</div><div class="p">${money(a.p)} each</div></div>
+        <div class="stepper">
+          <button type="button" onclick="setQty('${a.id}',-1)">−</button>
+          <span class="v" id="q_${a.id}">0</span>
+          <button type="button" onclick="setQty('${a.id}',1)">+</button>
+        </div>
+      </div>`;
+      if(a.buddy){
+        h+=`<label class="fld buddy-names" id="buddyWrap" style="display:none"><span class="lab">Name(s) of buddies <span class="req">*</span></span><input class="inp" id="fBuddy" placeholder="e.g. Sam Lee, Chris Ray" oninput="buddyNames=this.value"></label>`;
+      }
+    });
+    h+='</div>';
+  });
+  $('addonBox').innerHTML=h;
 }
-function toggleAddon(id){$('ad_'+id).classList.toggle('on');renderLive()}
-function bump(d){let q=itemQty()+d;if(q<1)q=1;if(q>50)q=50;$('fQty').value=q;renderLive()}
+function setQty(id,d){
+  qty[id]=Math.max(0,Math.min(20,qty[id]+d));
+  $('q_'+id).textContent=qty[id];
+  $('ad_'+id).classList.toggle('on',qty[id]>0);
+  if(id==='buddy')$('buddyWrap').style.display=qty[id]>0?'block':'none';
+  renderLive();
+}
+function selectedAddons(){return ALL_ADDONS.filter(a=>qty[a.id]>0).map(a=>({...a,q:qty[a.id],line:a.p*qty[a.id]}))}
+function orderTotal(){return curPkg().price+selectedAddons().reduce((s,a)=>s+a.line,0)}
 
 function renderLive(){
-  const p=curPkg(),ad=selectedAddons(),q=itemQty();
-  let lines=`<div class="sum-line"><span>${p.name}</span><span>${money(p.price)}</span></div>`;
-  ad.forEach(a=>lines+=`<div class="sum-line"><span>+ ${a.t}</span><span>${money(a.p)}</span></div>`);
-  lines+=`<div class="sum-line"><span>Quantity</span><span>× ${q}</span></div>`;
+  const p=curPkg(),ad=selectedAddons();
+  let lines='';
+  if(p.price)lines+=`<div class="sum-line"><span>${p.name}</span><span>${money(p.price)}</span></div>`;
+  ad.forEach(a=>lines+=`<div class="sum-line"><span>${a.t}${a.q>1?' × '+a.q:''}</span><span>${money(a.line)}</span></div>`);
+  if(!lines)lines='<div class="sum-line muted">Choose a package or add an item to begin</div>';
   $('liveLines').innerHTML=lines;
-  const tot=itemUnit()*q;
-  $('liveTotal').textContent=money(tot);
-  $('addPrice').textContent=money(tot);
+  $('liveTotal').textContent=money(orderTotal());
+  $('addPrice').textContent=money(orderTotal());
 }
 
 /* ---------- cart ---------- */
 function addToCart(){
-  const athlete=$('fAthlete').value.trim();
-  if(!athlete){$('fAthlete').focus();$('fAthlete').style.borderColor='var(--scarlet)';toast('Please enter the athlete name first');return}
-  $('fAthlete').style.borderColor='';
+  const af=$('fAthFirst').value.trim(),al=$('fAthLast').value.trim();
+  const pf=$('fParFirst').value.trim(),pl=$('fParLast').value.trim();
+  const miss=[];
+  if(!af)miss.push('fAthFirst');if(!al)miss.push('fAthLast');
+  if(!pf)miss.push('fParFirst');if(!pl)miss.push('fParLast');
+  miss.forEach(id=>$(id).style.borderColor='var(--scarlet)');
+  if(miss.length){$(miss[0]).focus();toast('Please fill in the athlete and parent names');return}
+  ['fAthFirst','fAthLast','fParFirst','fParLast'].forEach(id=>$(id).style.borderColor='');
+
   const p=curPkg(),ad=selectedAddons();
+  if(p.value==='NONE'&&!ad.length){toast('Pick a package or add at least one item');return}
+  if(!p.price&&!ad.length){toast('Pick a package or add at least one item');return}
+  if(qty['buddy']>0&&!buddyNames.trim()){$('fBuddy').style.borderColor='var(--scarlet)';$('fBuddy').focus();toast('Please enter the buddy name(s)');return}
+
   cart.push({
     key:Date.now()+Math.round(Math.random()*999),
-    pkg:p.name,tag:p.tag,
-    athlete,sport:$('fSport').value,jersey:$('fJersey').value.trim(),
-    addons:ad.map(a=>a.t),
-    unit:itemUnit(),qty:itemQty()
+    tag:p.tag==='—'?'+':p.tag,
+    athlete:af+' '+al,
+    parent:pf+' '+pl,
+    jersey:$('fJersey').value.trim(),
+    team:$('fSport').value+' · '+$('fLevel').value,
+    pkg:p.price?p.name:null,pkgPrice:p.price,
+    addons:ad.map(a=>({t:a.t,q:a.q,line:a.line})),
+    buddy:qty['buddy']>0?buddyNames.trim():'',
+    total:orderTotal()
   });
   updateCount();toast('Added to cart ✓');
-  ad.forEach(a=>$('ad_'+a.id).classList.remove('on'));
-  $('fQty').value=1;renderLive();
+  // reset item selections (keep parent/athlete blank for next athlete)
+  ALL_ADDONS.forEach(a=>{qty[a.id]=0;$('q_'+a.id).textContent='0';$('ad_'+a.id).classList.remove('on')});
+  buddyNames='';if($('fBuddy')){$('fBuddy').value='';$('buddyWrap').style.display='none'}
+  $('fAthFirst').value='';$('fAthLast').value='';$('fJersey').value='';
+  $('fPkg').value='A';renderPkg();
 }
-function updateCount(){$('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0)}
-function cartSub(){return cart.reduce((s,i)=>s+i.unit*i.qty,0)}
+function updateCount(){$('cartCount').textContent=cart.length}
+function cartSub(){return cart.reduce((s,i)=>s+i.total,0)}
 
 function renderCart(){
-  if(!cart.length){$('cartBody').innerHTML=`<div class="empty"><div class="big">Empty</div><p style="margin:10px 0 22px">No photos in your cart yet.</p><button class="btn btn-navy" onclick="go('order')">Start your order</button></div>`;return}
+  if(!cart.length){$('cartBody').innerHTML=`<div class="empty"><div class="big">Empty</div><p style="margin:10px 0 22px">No orders in your cart yet.</p><button class="btn btn-navy" onclick="go('order')">Start an order</button></div>`;return}
   let h='<div class="cart-list">';
   cart.forEach(i=>{
-    const meta=[i.athlete,i.sport,i.jersey?('#'+i.jersey):''].filter(Boolean).join(' · ');
-    const ax=i.addons.length?('<div class="meta">+ '+i.addons.join(', ')+'</div>'):'';
+    const meta=[i.athlete,i.jersey?('#'+i.jersey):'',i.team].filter(Boolean).join(' · ');
+    let items=[];
+    if(i.pkg)items.push('<b>'+i.pkg+'</b> — '+money(i.pkgPrice));
+    i.addons.forEach(a=>items.push(a.t+(a.q>1?' × '+a.q:'')+' — '+money(a.line)));
+    if(i.buddy)items.push('<span style="color:var(--muted)">Buddies: '+i.buddy+'</span>');
     h+=`<div class="citem">
       <div class="thumb">${i.tag}</div>
-      <div class="info"><div class="nm">${i.pkg}</div><div class="meta">${meta}</div>${ax}</div>
-      <div class="qty miniqty"><button onclick="cartQty(${i.key},-1)">−</button><input value="${i.qty}" readonly><button onclick="cartQty(${i.key},1)">+</button></div>
-      <div class="lp">${money(i.unit*i.qty)}</div>
+      <div class="info"><div class="nm">${i.athlete}</div><div class="meta">${i.team}${i.jersey?' · #'+i.jersey:''} · Parent: ${i.parent}</div>
+        <div class="items">${items.join('<br>')}</div></div>
+      <div class="lp">${money(i.total)}</div>
       <button class="del" onclick="removeItem(${i.key})">✕</button>
     </div>`;
   });
@@ -569,35 +543,31 @@ function renderCart(){
   h+=`<div class="cart-foot">
     <div class="tot">Cart total<b>${money(cartSub())}</b></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <button class="btn btn-ghost" onclick="go('order')">＋ Add more</button>
+      <button class="btn btn-ghost" onclick="go('order')">＋ Add another athlete</button>
       <button class="btn btn-primary" onclick="go('checkout')">Checkout →</button>
     </div>
   </div>`;
   $('cartBody').innerHTML=h;
 }
-function cartQty(k,d){const it=cart.find(i=>i.key===k);if(!it)return;it.qty+=d;if(it.qty<1)it.qty=1;updateCount();renderCart()}
 function removeItem(k){cart=cart.filter(i=>i.key!==k);updateCount();renderCart()}
 
 /* ---------- checkout ---------- */
 function renderCheckout(){
   $('coItems').innerHTML=cart.map(i=>{
     const meta=[i.athlete,i.jersey?('#'+i.jersey):''].filter(Boolean).join(' · ');
+    const label=i.pkg?i.pkg:'Add-ons';
+    const n=i.addons.length;
+    const extra=i.pkg&&n?(' + '+n+' extra'+(n>1?'s':'')):(!i.pkg?(n+' item'+(n>1?'s':'')):'');
     return `<div class="citem" style="box-shadow:none;border-color:var(--line);margin-bottom:10px">
       <div class="thumb">${i.tag}</div>
-      <div class="info"><div class="nm">${i.pkg} × ${i.qty}</div><div class="meta">${meta}</div></div>
-      <div class="lp">${money(i.unit*i.qty)}</div></div>`;
+      <div class="info"><div class="nm">${label}${extra}</div><div class="meta">${meta}</div></div>
+      <div class="lp">${money(i.total)}</div></div>`;
   }).join('');
-  const sub=cartSub(),tax=+(sub*0.0925).toFixed(2),tot=sub+tax;
+  const sub=cartSub(),tax=+(sub*0.095).toFixed(2),tot=sub+tax;
   $('coSub').textContent=money(sub);
   $('coTax').textContent=money(tax);
   $('coTotal').textContent=money(tot);
   $('payAmt').textContent=money(tot);
-}
-function payMethod(m){
-  $('pmCard').classList.toggle('on',m==='card');
-  $('pmPaypal').classList.toggle('on',m==='paypal');
-  $('cardForm').style.display=m==='card'?'block':'none';
-  $('paypalForm').style.display=m==='paypal'?'block':'none';
 }
 function fmtCard(){
   let v=$('ccNum').value.replace(/\D/g,'').slice(0,16);
@@ -609,12 +579,8 @@ function echoCard(){
   $('cardNameEcho').textContent=($('ccName').value||'CARDHOLDER NAME').toUpperCase();
   $('cardExpEcho').textContent=$('ccExp').value||'MM / YY';
 }
-function pay(){
-  ORDN++;
-  $('ordNo').textContent='#RU-2026-'+String(ORDN).padStart(5,'0');
-  go('confirm');
-}
-function resetAll(){cart=[];updateCount();$('fAthlete').value='';$('fJersey').value='';go('order')}
+function pay(){ORDN++;$('ordNo').textContent='#RU-2026-'+String(ORDN).padStart(5,'0');go('confirm')}
+function resetAll(){cart=[];updateCount();go('order')}
 
 /* ---------- nav ---------- */
 function go(v){
@@ -625,7 +591,10 @@ function go(v){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 let toastT;
-function toast(m){$('toastMsg').textContent=m;$('toast').classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>$('toast').classList.remove('show'),2200)}
+function toast(m){$('toastMsg').textContent=m;$('toast').classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>$('toast').classList.remove('show'),2400)}
+
+/* store select value on packages for checks */
+Object.keys(PACKAGES).forEach(k=>PACKAGES[k].value=k);
 
 /* ---------- init ---------- */
 renderAddons();renderPkg();updateCount();
