@@ -41,6 +41,13 @@ header.masthead::after{content:"";position:absolute;inset:0;pointer-events:none;
 .cartbtn:hover{background:rgba(255,255,255,.16)}
 .cartbtn .count{background:var(--scarlet);color:#fff;border-radius:100px;min-width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;padding:0 5px}
 .mh-hero{margin-top:34px;display:grid;grid-template-columns:1.4fr .9fr;gap:30px;align-items:end}
+.hero-head{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.crest{flex:none;width:90px;height:102px;background:linear-gradient(160deg,#16365f,#0b1f3a);border:2px solid var(--gold);
+  clip-path:polygon(50% 0,100% 0,100% 60%,50% 100%,0 60%,0 0);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;box-shadow:0 12px 26px -12px rgba(0,0,0,.55)}
+.crest .ini{font-family:'Anton';font-size:33px;color:#fff;line-height:.9}
+.crest .mas{font-family:'Barlow Condensed';font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.logo-slot{display:flex;flex-direction:column;align-items:center;gap:6px}
+.logo-hint{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7f8ea7;font-family:'Barlow Condensed';font-weight:600}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:14px;color:var(--gold);display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
 h1.title{font-family:'Anton',sans-serif;font-weight:400;line-height:.92;letter-spacing:.01em;font-size:clamp(42px,7.5vw,88px);text-transform:uppercase;margin:14px 0 6px;text-shadow:0 2px 0 rgba(0,0,0,.2)}
@@ -203,10 +210,16 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
       </button>
     </div>
     <div class="mh-hero">
-      <div>
-        <div class="eyebrow">Sea Hawks Athletics</div>
-        <h1 class="title">Redondo Union<br>Sports <span class="yr">2026</span></h1>
-        <p class="subhead">Official team &amp; individual sports photos. Pick a package, add any extras, and check out securely — no more paper order forms.</p>
+      <div class="hero-head">
+        <div class="logo-slot">
+          <div class="crest"><span class="ini" id="crestIni">RU</span><span class="mas" id="crestMas">SEA HAWKS</span></div>
+          <span class="logo-hint">▲ your logo here</span>
+        </div>
+        <div>
+          <div class="eyebrow" id="mascotLine">Sea Hawks Athletics</div>
+          <h1 class="title" id="progTitle">Redondo Union<br>Sports <span class="yr">2026</span></h1>
+          <p class="subhead">Official team &amp; individual sports photos. Pick a package, add any extras, and check out securely — no more paper order forms.</p>
+        </div>
       </div>
       <div class="mh-card">
         <h4>How ordering works</h4>
@@ -234,18 +247,10 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
               <label class="fld"><span class="lab">Athlete First Name <span class="req">*</span></span><input class="inp" id="fAthFirst" placeholder="Jordan"></label>
               <label class="fld"><span class="lab">Athlete Last Name <span class="req">*</span></span><input class="inp" id="fAthLast" placeholder="Reyes"></label>
             </div>
-            <div class="grid3">
+            <div class="grid2">
               <label class="fld"><span class="lab">Jersey #</span><input class="inp" id="fJersey" placeholder="24"></label>
-              <label class="fld"><span class="lab">Sport / Team</span>
-                <select class="inp" id="fSport">
-                  <option>Football</option><option>Girls Volleyball</option><option>Boys Basketball</option>
-                  <option>Girls Basketball</option><option>Girls Soccer</option><option>Boys Soccer</option>
-                  <option>Baseball</option><option>Softball</option><option>Track &amp; Field</option>
-                  <option>Water Polo</option><option>Cheer</option><option>Other</option>
-                </select>
-              </label>
-              <label class="fld"><span class="lab">Level</span>
-                <select class="inp" id="fLevel"><option>Varsity</option><option>JV</option><option>Freshman</option></select>
+              <label class="fld"><span class="lab" id="divLabel">Team / Division <span class="req">*</span></span>
+                <select class="inp" id="fDivision"></select>
               </label>
             </div>
             <div class="grid2">
@@ -387,6 +392,23 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg">Added to cart</span></div>
 
 <script>
+/* ============================================================
+   PROGRAM CONFIG — this is all that changes per school/team.
+   Clone the page, edit this block, and you have a new store.
+   ============================================================ */
+const PROGRAM={
+  line1:"Redondo Union",       // program name (line 1)
+  line2:"Sports",              // program name (line 2)
+  year:"2026",
+  mascot:"Sea Hawks Athletics",// eyebrow line
+  crest:"RU",                  // shown on the crest until real logo is dropped in
+  crestMascot:"SEA HAWKS",
+  divisionLabel:"Team / Division",
+  divisions:["Varsity","JV","Freshman"]
+  // Youth-org example would simply be:
+  // divisions:["10U","11U","12U Black","12U Blue","13U"]
+};
+
 /* ---------- data (from the real Redondo Union order form) ---------- */
 const PACKAGES={
   A:{name:"Package A",price:35,tag:"A",inc:"2 &times; 5&times;7 prints &middot; 8 wallets &middot; 8&times;10 Memory Mate"},
@@ -506,7 +528,7 @@ function addToCart(){
     athlete:af+' '+al,
     parent:pf+' '+pl,
     jersey:$('fJersey').value.trim(),
-    team:$('fSport').value+' · '+$('fLevel').value,
+    team:$('fDivision').value,
     pkg:p.price?p.name:null,pkgPrice:p.price,
     addons:ad.map(a=>({t:a.t,q:a.q,line:a.line})),
     buddy:qty['buddy']>0?buddyNames.trim():'',
@@ -596,8 +618,18 @@ function toast(m){$('toastMsg').textContent=m;$('toast').classList.add('show');c
 /* store select value on packages for checks */
 Object.keys(PACKAGES).forEach(k=>PACKAGES[k].value=k);
 
+/* ---------- apply program config ---------- */
+function initProgram(){
+  $('crestIni').textContent=PROGRAM.crest;
+  $('crestMas').textContent=PROGRAM.crestMascot;
+  $('mascotLine').textContent=PROGRAM.mascot;
+  $('progTitle').innerHTML=`${PROGRAM.line1}<br>${PROGRAM.line2} <span class="yr">${PROGRAM.year}</span>`;
+  $('divLabel').innerHTML=`${PROGRAM.divisionLabel} <span class="req">*</span>`;
+  $('fDivision').innerHTML=PROGRAM.divisions.map(d=>`<option>${d}</option>`).join('');
+}
+
 /* ---------- init ---------- */
-renderAddons();renderPkg();updateCount();
+initProgram();renderAddons();renderPkg();updateCount();
 </script>
 </body>
 </html>
