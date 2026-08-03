@@ -47,6 +47,7 @@ header.masthead::after{content:"";position:absolute;inset:0;pointer-events:none;
 .crest .ini{font-family:'Anton';font-size:33px;color:#fff;line-height:.9}
 .crest .mas{font-family:'Barlow Condensed';font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
 .logo-slot{display:flex;flex-direction:column;align-items:center;gap:6px}
+.crest-logo{width:120px;height:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.45))}
 .logo-hint{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7f8ea7;font-family:'Barlow Condensed';font-weight:600}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:14px;color:var(--gold);display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
@@ -223,8 +224,8 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
     <div class="mh-hero">
       <div class="hero-head">
         <div class="logo-slot">
-          <div class="crest"><span class="ini" id="crestIni">RU</span><span class="mas" id="crestMas">SEA HAWKS</span></div>
-          <span class="logo-hint">▲ your logo here</span>
+          <img class="crest-logo" id="crestLogo" alt="Program logo" style="display:none">
+          <div class="crest" id="crestShield"><span class="ini" id="crestIni">RU</span><span class="mas" id="crestMas">SEA HAWKS</span></div>
         </div>
         <div>
           <div class="eyebrow" id="mascotLine">Sea Hawks Athletics</div>
@@ -425,6 +426,7 @@ const PROGRAM={
   mascot:"Sea Hawks Athletics",// eyebrow line
   crest:"RU",                  // shown on the crest until real logo is dropped in
   crestMascot:"SEA HAWKS",
+  logo:"redondo-white.png",      // real logo; leave blank to fall back to the initials crest
   sports:["Football"],           // 1 sport = field hidden; 2+ = a Sport dropdown appears
   divisionLabel:"Team / Division",
   divisions:["Varsity","JV","Freshman"]
@@ -663,6 +665,8 @@ Object.keys(PACKAGES).forEach(k=>PACKAGES[k].value=k);
 
 /* ---------- apply program config ---------- */
 function initProgram(){
+  if(PROGRAM.logo){$('crestLogo').src=PROGRAM.logo;$('crestLogo').style.display='block';$('crestShield').style.display='none';}
+  else{$('crestLogo').style.display='none';$('crestShield').style.display='flex';}
   $('crestIni').textContent=PROGRAM.crest;
   $('crestMas').textContent=PROGRAM.crestMascot;
   $('mascotLine').textContent=PROGRAM.mascot;
