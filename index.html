@@ -179,6 +179,17 @@ select.inp.big{padding:15px 44px 15px 14px;font-weight:600;font-size:16px;appear
 footer{background:var(--navy);color:#8ea1bd;text-align:center;padding:26px 20px;font-size:13px}
 footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase}
 
+.seebtn{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);color:var(--navy);border-radius:8px;padding:5px 9px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Barlow',sans-serif;transition:.15s;flex:none}
+.seebtn:hover{border-color:var(--navy);background:var(--paper)}
+.seebtn svg{width:14px;height:14px;stroke:var(--navy);flex:none}
+.addon .seebtn{padding:6px}
+.lightbox{position:fixed;inset:0;background:rgba(8,15,28,.82);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.show{display:flex;animation:fade .25s}
+.lb-inner{position:relative;max-width:520px;width:100%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.lb-inner img{width:100%;display:block;background:var(--navy)}
+.lb-cap{padding:14px 18px;font-weight:700;color:var(--ink)}
+.lb-cap small{display:block;color:var(--muted);font-weight:500;margin-top:3px}
+.lb-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:none;font-size:16px;cursor:pointer;line-height:1}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--navy);color:#fff;padding:14px 22px;border-radius:100px;font-weight:600;box-shadow:var(--shadow);z-index:99;display:flex;gap:10px;align-items:center;transition:.35s cubic-bezier(.2,1.2,.4,1);max-width:90vw}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast svg{width:18px;height:18px;stroke:var(--gold);flex:none}
@@ -247,8 +258,11 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
               <label class="fld"><span class="lab">Athlete First Name <span class="req">*</span></span><input class="inp" id="fAthFirst" placeholder="Jordan"></label>
               <label class="fld"><span class="lab">Athlete Last Name <span class="req">*</span></span><input class="inp" id="fAthLast" placeholder="Reyes"></label>
             </div>
-            <div class="grid2">
+            <div class="grid2" id="teamRow">
               <label class="fld"><span class="lab">Jersey #</span><input class="inp" id="fJersey" placeholder="24"></label>
+              <label class="fld" id="sportField" style="display:none"><span class="lab">Sport</span>
+                <select class="inp" id="fSport"></select>
+              </label>
               <label class="fld"><span class="lab" id="divLabel">Team / Division <span class="req">*</span></span>
                 <select class="inp" id="fDivision"></select>
               </label>
@@ -391,6 +405,14 @@ footer b{color:#fff;font-family:'Barlow Condensed';letter-spacing:.08em;text-tra
 
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg">Added to cart</span></div>
 
+<div class="lightbox" id="lightbox" onclick="closeLb()">
+  <div class="lb-inner" onclick="event.stopPropagation()">
+    <img id="lbImg" alt="Sample">
+    <div class="lb-cap"><span id="lbCap">Sample</span><small>Demo placeholder — the real product photo drops in here.</small></div>
+    <button class="lb-x" onclick="closeLb()">✕</button>
+  </div>
+</div>
+
 <script>
 /* ============================================================
    PROGRAM CONFIG — this is all that changes per school/team.
@@ -403,10 +425,12 @@ const PROGRAM={
   mascot:"Sea Hawks Athletics",// eyebrow line
   crest:"RU",                  // shown on the crest until real logo is dropped in
   crestMascot:"SEA HAWKS",
+  sports:["Football"],           // 1 sport = field hidden; 2+ = a Sport dropdown appears
   divisionLabel:"Team / Division",
   divisions:["Varsity","JV","Freshman"]
-  // Youth-org example would simply be:
-  // divisions:["10U","11U","12U Black","12U Blue","13U"]
+  // South Bay Sharks example would simply be:
+  // sports:["Football","Cheer"], divisions:["10U","11U","12U Black","12U Blue","13U"]
+  // Prices are per-program too — see PACKAGES below (Redondo 35/45/55; another school could be 45/55/65).
 };
 
 /* ---------- data (from the real Redondo Union order form) ---------- */
@@ -446,6 +470,22 @@ const GROUPS=[
 const ALL_ADDONS=GROUPS.flatMap(g=>g.items);
 const byId=id=>ALL_ADDONS.find(a=>a.id===id);
 
+const CAM='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
+function sampleImg(label){
+  const t=String(label).replace(/&/g,'and');
+  const svg="<svg xmlns='http://www.w3.org/2000/svg' width='520' height='360'>"+
+    "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#16365f'/><stop offset='1' stop-color='#0b1f3a'/></linearGradient></defs>"+
+    "<rect width='520' height='360' fill='url(#g)'/>"+
+    "<circle cx='260' cy='140' r='46' fill='none' stroke='#e6b34a' stroke-width='3'/>"+
+    "<circle cx='260' cy='140' r='15' fill='#e6b34a'/>"+
+    "<rect x='236' y='104' width='48' height='10' rx='3' fill='#e6b34a'/>"+
+    "<text x='260' y='250' fill='#fff' font-family='Arial,sans-serif' font-size='20' font-weight='bold' text-anchor='middle'>"+t+"</text>"+
+    "<text x='260' y='282' fill='#9fb0c8' font-family='Arial,sans-serif' font-size='13' text-anchor='middle'>Sample product photo</text></svg>";
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+}
+function openLb(label){$('lbImg').src=sampleImg(label);$('lbCap').textContent=label;$('lightbox').classList.add('show')}
+function closeLb(){$('lightbox').classList.remove('show')}
+
 let qty={};ALL_ADDONS.forEach(a=>qty[a.id]=0);
 let buddyNames="";
 let cart=[];
@@ -460,7 +500,8 @@ function renderPkg(){
   const p=curPkg();
   $('pkgDetail').innerHTML=`
     <div class="pic">${p.tag}</div>
-    <div><div style="font-weight:700;font-size:16px">${p.name}</div><div class="inc">${p.inc}</div></div>
+    <div><div style="font-weight:700;font-size:16px">${p.name}</div><div class="inc">${p.inc}</div>
+      ${p.value==='NONE'?'':`<button class="seebtn" style="margin-top:9px" onclick="openLb('${p.name} — sample')">${CAM} See sample</button>`}</div>
     <div class="pr">${p.price?money(p.price):'—'}</div>`;
   renderLive();
 }
@@ -471,6 +512,7 @@ function renderAddons(){
     g.items.forEach(a=>{
       h+=`<div class="addon" id="ad_${a.id}">
         <div class="txt"><div class="t">${a.t}</div><div class="p">${money(a.p)} each</div></div>
+        <button class="seebtn" title="See sample" aria-label="See sample" onclick="openLb('${a.t}')">${CAM}</button>
         <div class="stepper">
           <button type="button" onclick="setQty('${a.id}',-1)">−</button>
           <span class="v" id="q_${a.id}">0</span>
@@ -528,6 +570,7 @@ function addToCart(){
     athlete:af+' '+al,
     parent:pf+' '+pl,
     jersey:$('fJersey').value.trim(),
+    sport:currentSport(),
     team:$('fDivision').value,
     pkg:p.price?p.name:null,pkgPrice:p.price,
     addons:ad.map(a=>({t:a.t,q:a.q,line:a.line})),
@@ -555,7 +598,7 @@ function renderCart(){
     if(i.buddy)items.push('<span style="color:var(--muted)">Buddies: '+i.buddy+'</span>');
     h+=`<div class="citem">
       <div class="thumb">${i.tag}</div>
-      <div class="info"><div class="nm">${i.athlete}</div><div class="meta">${i.team}${i.jersey?' · #'+i.jersey:''} · Parent: ${i.parent}</div>
+      <div class="info"><div class="nm">${i.athlete}</div><div class="meta">${i.sport?i.sport+' · ':''}${i.team}${i.jersey?' · #'+i.jersey:''} · Parent: ${i.parent}</div>
         <div class="items">${items.join('<br>')}</div></div>
       <div class="lp">${money(i.total)}</div>
       <button class="del" onclick="removeItem(${i.key})">✕</button>
@@ -626,6 +669,20 @@ function initProgram(){
   $('progTitle').innerHTML=`${PROGRAM.line1}<br>${PROGRAM.line2} <span class="yr">${PROGRAM.year}</span>`;
   $('divLabel').innerHTML=`${PROGRAM.divisionLabel} <span class="req">*</span>`;
   $('fDivision').innerHTML=PROGRAM.divisions.map(d=>`<option>${d}</option>`).join('');
+  // Sport: show a dropdown only if the program runs more than one sport
+  const multi=PROGRAM.sports&&PROGRAM.sports.length>1;
+  if(multi){
+    $('fSport').innerHTML=PROGRAM.sports.map(s=>`<option>${s}</option>`).join('');
+    $('sportField').style.display='block';
+    $('teamRow').className='grid3';
+  }else{
+    $('sportField').style.display='none';
+    $('teamRow').className='grid2';
+  }
+}
+function currentSport(){
+  if(PROGRAM.sports&&PROGRAM.sports.length>1)return $('fSport').value;
+  return PROGRAM.sports&&PROGRAM.sports.length===1?PROGRAM.sports[0]:'';
 }
 
 /* ---------- init ---------- */
